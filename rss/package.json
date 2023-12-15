@@ -11,7 +11,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@extractus/feed-extractor": "^7.0.8"
+    "@extractus/feed-extractor": "^7.0.8",
+    "masto": "^6.5.1"
   },
   "devDependencies": {
     "eslint": "^8.55.0",
