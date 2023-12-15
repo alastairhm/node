@@ -22,14 +22,14 @@ function readParameters(path) {
 }
 
 // extract a RSS
-let config = readParameters("./settings.json");
+let config = readParameters("/mnt/settings.json");
+let lastDate = new Date(config.last_post);
+console.log("Fetching RSS Feed");
 const result = await extract(config.rss_feed);
 console.log("Posts Found:", result.entries.length);
-let lastDate = new Date(config.last_post);
-console.log("Last Date:", lastDate);
+console.log("Last posts' date posted:", lastDate);
 for (let post = config.previous; post >= 0; post--) {
   let postDate = new Date(result.entries[post].published);
-  console.log(postDate);
   if (postDate > lastDate) {
     let buffer = result.entries[post].title;
     buffer = buffer + "\n" + result.entries[post].link;
