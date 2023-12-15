@@ -1,0 +1,11 @@
+import { extract } from '@extractus/feed-extractor';
+
+// extract a RSS
+const result = await extract('https://blog.0x32.co.uk/index.xml');
+console.log(result.entries.length);
+let date = "2023-11-03T15:58:16.000Z";
+for (let post = 0; post < 10; post++){
+  console.log(result.entries[post].title);
+  console.log(result.entries[post].link);
+  console.log(result.entries[post].description);
+}
