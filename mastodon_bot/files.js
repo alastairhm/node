@@ -18,7 +18,7 @@ function fromDir(startPath, filter) {
       console.log('-- found: ', filename);
       postImage(filename, "https://mastodon.me.uk/", process.env.TOKEN);
       const newPath = path.join("images_uploaded",path.basename(filename));
-      // fileMove(filename,newPath);
+      fileMove(filename,newPath);
     }
   }
 }
