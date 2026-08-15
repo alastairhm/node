@@ -16,7 +16,7 @@ Directories:
   - `image.js` — uploads `some_image.jpg` as media and posts it.
   - `files.js` — recursively scans `./images` for `.png` files, posts each as media, then moves the file into `./images_uploaded`.
   - Each script hardcodes its own Mastodon instance URL and reads the access token from `process.env.TOKEN`. Run a specific script directly, e.g. `node dadjoke.js` — there is no dispatcher.
-- **`node-p5/`** — uses `node-p5` (a Node port of p5.js) to draw to an off-screen canvas and save it as `myCanvas.png`.
+- **`node-p5/`** — uses `node-p5` (a Node port of p5.js) to draw to an off-screen canvas and save it as `myCanvas.png`. **Known accepted risk:** the `node-p5` package is abandoned upstream (last published years ago, stuck at v1.0.4) and pins ancient transitive deps (`axios ^0.21.1`, `jsdom ^15`, `canvas ^2.5` → old `tar`/`@mapbox/node-pre-gyp`, plus the fully-deprecated `request`/`request-promise-native` stack). This produces dozens of open Dependabot alerts, several critical, that `npm audit fix --force` cannot resolve — there is no newer `node-p5` release and `request` has no patched version at all. Remediation would require dropping/replacing `node-p5`, not patching it; until that happens the risk is accepted since this is a local, non-network-facing canvas experiment.
 - **`rss/`** — the most complete project here; reads an RSS feed and posts new entries to Mastodon (see below).
 
 ## The `rss` project
