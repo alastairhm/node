@@ -1,3 +1,9 @@
 */node_modules/*
 
 settings.json.orig
+
+# node-p5 depends on the abandoned node-p5 npm package, which pins
+# deprecated/vulnerable transitive deps with no available fix (see
+# CLAUDE.md). Not tracking the lockfile keeps GitHub's dependency graph
+# from re-raising Dependabot alerts on it.
+node-p5/package-lock.json
